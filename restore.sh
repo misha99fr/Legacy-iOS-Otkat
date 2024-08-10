@@ -296,17 +296,17 @@ set_tool_paths() {
         killall -STOP AMPDevicesAgent AMPDeviceDiscoveryAgent MobileDeviceUpdater
 
     else
-        error "Your platform ($OSTYPE) is not supported." "* Supported platforms: Linux, macOS"
+        error "Твоя плафторма блять ($OSTYPE) не поддерживается." "* Поддерживаемые платформы: Linux, macOS"
     fi
     log "Running on platform: $platform ($platform_ver)"
     if [[ ! -d $dir ]]; then
         error "Failed to find bin directory ($dir), cannot continue." \
-        "* Re-download Legacy iOS Kit from releases (or do a git clone/reset)"
+        "* Переустанови iOS Kit из релизов (или сделай git clone/reset)"
     fi
     if [[ $device_sudoloop == 1 ]]; then
         sudo chmod +x $dir/*
         if [[ $? != 0 ]]; then
-            error "Failed to set up execute permissions of binaries, cannot continue. Try to move Legacy iOS Kit somewhere else."
+            error "Нихуя не получилось, cannot continue. Try to move Legacy iOS Kit somewhere else."
         fi
     else
         chmod +x $dir/*
@@ -1593,7 +1593,7 @@ device_enter_mode() {
                 done
                 echo
                 log "Please read the message below:"
-                warn "If you have an older Mac with Core 2 Duo, success rates for A7 checkm8 are very low."
+                warn "Если у вас старый Мак с Core 2 Duo, успешный откат для A7 checkm8 are very low(я лично использовал celeron n4000)."
                 print "* Pwning using another Mac or iOS device using iPwnder Lite are better options if needed."
                 print "* For more details, read the \"Troubleshooting\" wiki page in GitHub"
                 print "* Troubleshooting links:"
@@ -1629,10 +1629,10 @@ device_pwnerror() {
         error_msg+=$'\n* Unfortunately, success rates for checkm8 are very low on Linux.'
         error_msg+=$'\n* Pwning using a Mac or another iOS device using iPwnder Lite are better options.'
     elif [[ $platform == "linux" && $device_proc == 4 ]]; then
-        error_msg+=$'\n* Unfortunately, pwning may have low success rates for PCs with an AMD CPU.'
-        error_msg+=$'\n* Pwning using an Intel PC or another device may be better options.'
+        error_msg+=$'\n* НЕ РЕКОМЕНДУЕТСЯ ЮЗАТЬ ЕБАНЫЙ АМД'
+        error_msg+=$'\n* ЛУЧШЕ НА ИНТЕЛЕ ШИТЬ КАМОН ВОЗЬМИ ТЫ СЕБЕ НОУТ С АВИТО НА СЕЛЕРОНЕ НАПРИМЕР.'
     elif [[ $platform == "macos" ]]; then
-        error_msg+=$'\n* If you get the error "No backend available" in ipwndfu, install libusb in Homebrew/MacPorts'
+        error_msg+=$'\n* If you get the error "нет backendа" in ipwndfu, ПОСТАВЬ libusb in Homebrew/MacPorts'
     fi
     error_msg+=$'\n* For more details, read the "Troubleshooting" wiki page in GitHub'
     error_msg+=$'\n* Troubleshooting links:
